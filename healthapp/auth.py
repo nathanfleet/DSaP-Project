@@ -23,6 +23,11 @@ def register_user(username: str, password: str):
     user = User(username=username, password=hashed_password)
     user.save()
 
+def logout_user(request):
+    if 'user_id' in request.session:
+        del request.session['user_id']
+    return redirect('login')
+
 def authenticate_user(username: str, password: str):
     try:
         user = User.objects.get(username=username)

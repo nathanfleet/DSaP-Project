@@ -17,10 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from healthapp import views
+from healthapp.auth import logout_user
 
 urlpatterns = [
     path('', views.home, name='home'),
     path('register/', views.register, name='register'),
     path('login/', views.login, name='login'),
     path('protected/', views.protected_view, name='protected'),
+    path('logout/', logout_user, name='logout')
 ]
